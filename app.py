@@ -40,6 +40,15 @@ class TaskMonitor :
         taskMon_page.create_text( 530, 130, text = "Task Monitoring", 
                                 font = ( "Georgia", 42, "bold" ), fill = "#ec1c24" )
 
+        # Task Index Box
+        indx = ctk.CTkEntry( master = taskMon_page, 
+                              placeholder_text = "Index", text_font = ( "Georgia", 20 ), 
+                               width = 95, height = 30, corner_radius = 14,
+                                placeholder_text_color = "#666666", text_color = "#191919", 
+                                 fg_color = "#e1f5ff", bg_color = "black", 
+                                  border_color = "white", border_width = 3)
+        indx_win = taskMon_page.create_window( 200, 320-120, anchor = "nw", window = indx )
+
         # Return Button
         back_bt = ctk.CTkButton( master = taskMon_page, 
                                   text = "Back", text_font = ( "Georgia", 20 ),  
