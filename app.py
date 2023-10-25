@@ -21,6 +21,17 @@ class TaskMonitor :
         self.root.geometry( "1200x700+200+80" )
         self.root.resizable( False, False )
     
+    def taskMonitoringPage() :
+
+        # Defining Structure
+        taskMon_page = Canvas( self.root, 
+                                width = self.width, height = self.height, 
+                                 bg = "black", highlightcolor = "#3c5390", 
+                                  borderwidth = 0 )
+        taskMon_page.pack( fill = "both", expand = True )
+
+        self.root.mainloop()
+
     def firstPage(self) :
 
         # Defining Structure
