@@ -36,6 +36,19 @@ class TaskMonitor :
                                   borderwidth = 0 )
         taskMon_page.pack( fill = "both", expand = True )
 
+        # Heading
+        taskMon_page.create_text( 530, 130, text = "Task Monitoring", 
+                                font = ( "Georgia", 42, "bold" ), fill = "#ec1c24" )
+
+        # Return Button
+        back_bt = ctk.CTkButton( master = taskMon_page, 
+                                  text = "Back", text_font = ( "Georgia", 20 ),  
+                                   width = 45, height = 45, corner_radius = 23, 
+                                    bg_color = "#fcd7ab", fg_color = "red", 
+                                     hover_color = "#ff5359", border_width = 0, 
+                                      command = lambda : self.change( taskMon_page, self.firstPage ))
+        back_bt_win = taskMon_page.create_window( 30, 20, anchor = "nw", window = back_bt )
+
         self.root.mainloop()
 
     def firstPage(self) :
