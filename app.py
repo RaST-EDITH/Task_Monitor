@@ -21,7 +21,13 @@ class TaskMonitor :
         self.root.geometry( "1200x700+200+80" )
         self.root.resizable( False, False )
     
-    def taskMonitoringPage() :
+    def change( self, can, page) :
+
+        # Switching canvas
+        can.destroy()
+        page()
+
+    def taskMonitoringPage(self) :
 
         # Defining Structure
         taskMon_page = Canvas( self.root, 
@@ -52,7 +58,7 @@ class TaskMonitor :
                                     bg_color = "#fecc8f", fg_color = "#ec1c24", 
                                      hover_color = "#ff5359", border_width = 0,
                                       text_color = "white",
-                                       command = lambda : print("Changed") )
+                                       command = lambda : self.change( first_page, self.taskMonitoringPage ) )
         next_bt_win = first_page.create_window( 320, 720, anchor = "nw", window = next_bt )
 
         self.root.mainloop()
