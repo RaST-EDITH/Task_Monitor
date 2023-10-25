@@ -11,7 +11,7 @@ from tkinter.messagebox import showerror, showinfo
 
 class TaskMonitor :
 
-    def __init__() :
+    def __init__(self) :
         ctk.set_appearance_mode( "dark" )
         ctk.set_default_color_theme( "dark-blue" )
         self.width = 1200
@@ -29,6 +29,20 @@ class TaskMonitor :
                                bg = "black", highlightcolor = "#3c5390", 
                                 borderwidth = 0 )
         first_page.pack( fill = "both", expand = True )
+
+        # Heading
+        first_page.create_text( 400, 119, text = "Task Monitor", 
+                                font = ( "Georgia", 42, "bold" ), fill = "#ec1c24" )
+
+        # Next Page Button
+        next_bt = ctk.CTkButton( master = first_page, 
+                                  text = "Let's Go ->", text_font = ( "Tahoma", 20 ), 
+                                   width = 100, height = 40, corner_radius = 18,
+                                    bg_color = "#fecc8f", fg_color = "#ec1c24", 
+                                     hover_color = "#ff5359", border_width = 0,
+                                      text_color = "white",
+                                       command = lambda : print("Changed") )
+        next_bt_win = first_page.create_window( 320, 720, anchor = "nw", window = next_bt )
 
         self.root.mainloop()
 
