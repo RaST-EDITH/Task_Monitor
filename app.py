@@ -48,6 +48,15 @@ class TaskMonitor :
                                  fg_color = "#e1f5ff", bg_color = "black", 
                                   border_color = "white", border_width = 3)
         indx_win = taskMon_page.create_window( 200, 320-120, anchor = "nw", window = indx )
+        
+        # Task Entry Box
+        task = ctk.CTkEntry( master = taskMon_page, 
+                              placeholder_text = "Enter Task", text_font = ( "Georgia", 20 ), 
+                               width = 550, height = 30, corner_radius = 14,
+                                placeholder_text_color = "#666666", text_color = "#191919", 
+                                 fg_color = "#e1f5ff", bg_color = "black", 
+                                  border_color = "white", border_width = 3)
+        task_win = taskMon_page.create_window( 325, 320-120, anchor = "nw", window = task )
 
         # Return Button
         back_bt = ctk.CTkButton( master = taskMon_page, 
