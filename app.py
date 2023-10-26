@@ -58,6 +58,17 @@ class TaskMonitor :
                                   border_color = "white", border_width = 3)
         task_win = taskMon_page.create_window( 325, 320-120, anchor = "nw", window = task )
 
+        task_box = ctk.CTkTextbox( taskMon_page, 
+                                    width = 850, height = 400, 
+                                     text_font = ( "Georgia", 20  ), 
+                                      state = "disabled"  )
+        task_box.place( x = 80, y = 230, anchor = "nw")
+
+        self.insertTaskAnalysis()
+        self.insertTask( task_box )
+
+        task.bind('<Return>', lambda event = None : self.updateTask( indx.get(), task.get(), task_box, taskMon_page ) )
+
         # Return Button
         back_bt = ctk.CTkButton( master = taskMon_page, 
                                   text = "Back", text_font = ( "Georgia", 20 ),  
