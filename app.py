@@ -93,6 +93,15 @@ class TaskMonitor :
 
         remove.bind('<Return>', lambda event = None : self.removeTask( remove.get(), task_box, taskMon_page ) )
 
+        # Remove Button
+        remove_bt = ctk.CTkButton( master = taskMon_page, 
+                                    text = "Remove", text_font = ( "Georgia", 20  ), 
+                                     width = 80, height = 40, corner_radius = 18,
+                                      bg_color = "black", fg_color = "red", 
+                                       hover_color = "#ff5359", border_width = 0, 
+                                        command = lambda : self.removeTask( remove.get(), task_box, taskMon_page ) )
+        remove_bt_win = taskMon_page.create_window( 1285, 440, anchor = "nw", window = remove_bt )
+
         # Return Button
         back_bt = ctk.CTkButton( master = taskMon_page, 
                                   text = "Back", text_font = ( "Georgia", 20 ),  
