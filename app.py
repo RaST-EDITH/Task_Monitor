@@ -69,6 +69,15 @@ class TaskMonitor :
 
         task.bind('<Return>', lambda event = None : self.updateTask( indx.get(), task.get(), task_box, taskMon_page ) )
 
+        # Insert Button
+        insert_bt = ctk.CTkButton( master = taskMon_page, 
+                                   text = "Insert", text_font = ( "Georgia", 20  ), 
+                                    width = 100, height = 40, corner_radius = 18,
+                                     bg_color = "black", fg_color = "red", 
+                                      hover_color = "#ff5359", border_width = 0, 
+                                       command = lambda : self.updateTask( indx.get(), task.get(), task_box, taskMon_page ) )
+        insert_bt_win = taskMon_page.create_window( 1030, 320-120, anchor = "nw", window = insert_bt )
+
         # Return Button
         back_bt = ctk.CTkButton( master = taskMon_page, 
                                   text = "Back", text_font = ( "Georgia", 20 ),  
