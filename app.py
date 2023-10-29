@@ -102,6 +102,21 @@ class TaskMonitor :
                                         command = lambda : self.removeTask( remove.get(), task_box, taskMon_page ) )
         remove_bt_win = taskMon_page.create_window( 1285, 440, anchor = "nw", window = remove_bt )
 
+        # Mark Done Task
+        taskMon_page.create_text( 1115+20+130+50, 550+50, text = "Mark Done Task", 
+                                font = ( "Tahoma", 18, "italic", "underline" ), fill = "white" )
+
+        # Task Done Box
+        tkdone = ctk.CTkEntry( master = taskMon_page, 
+                                placeholder_text = "Index", text_font = ( "Georgia", 20 ), 
+                                 width = 180, height = 30, corner_radius = 14,
+                                  placeholder_text_color = "#666666", text_color = "#191919", 
+                                   fg_color = "#e1f5ff", bg_color = "black", 
+                                    border_color = "white", border_width = 3)
+        tkdone_win = taskMon_page.create_window( 1015+130+50, 580+50, anchor = "nw", window = tkdone )
+
+        tkdone.bind('<Return>', lambda event = None : self.statusTask( tkdone.get(), task_box, taskMon_page ) )
+
         # Return Button
         back_bt = ctk.CTkButton( master = taskMon_page, 
                                   text = "Back", text_font = ( "Georgia", 20 ),  
