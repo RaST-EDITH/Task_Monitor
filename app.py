@@ -116,6 +116,15 @@ class TaskMonitor :
         tkdone_win = taskMon_page.create_window( 1015+130+50, 580+50, anchor = "nw", window = tkdone )
 
         tkdone.bind('<Return>', lambda event = None : self.statusTask( tkdone.get(), task_box, taskMon_page ) )
+    
+        # Done Button
+        tkdone_bt = ctk.CTkButton( master = taskMon_page, 
+                                   text = "Mark Done", text_font = ( "Georgia", 20 ), 
+                                    width = 80, height = 40, corner_radius = 18,
+                                     bg_color = "black", fg_color = "red", 
+                                      hover_color = "#ff5359", border_width = 0, 
+                                       command = lambda : self.statusTask( tkdone.get(), task_box, taskMon_page ) )
+        tkdone_bt_win = taskMon_page.create_window( 1250, 650+50, anchor = "nw", window = tkdone_bt )
 
         # Return Button
         back_bt = ctk.CTkButton( master = taskMon_page, 
