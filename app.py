@@ -126,6 +126,15 @@ class TaskMonitor :
                                        command = lambda : self.statusTask( tkdone.get(), task_box, taskMon_page ) )
         tkdone_bt_win = taskMon_page.create_window( 1250, 650+50, anchor = "nw", window = tkdone_bt )
 
+        # Analysis Button
+        analysis_bt = ctk.CTkButton( master = taskMon_page, 
+                                      text = "Analysis", text_font = ( "Georgia", 20 ), 
+                                       width = 120, height = 40, corner_radius = 18,
+                                        bg_color = "black", fg_color = "red", 
+                                         hover_color = "#ff5359", border_width = 0, 
+                                          command = lambda : self.taskAnalysis() )
+        analysis_bt_win = taskMon_page.create_window( 650, 805, anchor = "nw", window = analysis_bt )
+
         # Return Button
         back_bt = ctk.CTkButton( master = taskMon_page, 
                                   text = "Back", text_font = ( "Georgia", 20 ),  
