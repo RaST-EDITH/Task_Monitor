@@ -20,12 +20,23 @@ class TaskMonitor :
         self.root.title( "Task Monitor" )
         self.root.geometry( "1200x700+200+80" )
         self.root.resizable( False, False )
+        self.path = os.path.join( os.getcwd(), r"Data File\task_file.xlsx")
+        xl = pd.ExcelFile( self.path )
+        self.all_sheets = xl.sheet_names
     
     def change( self, can, page) :
 
         # Switching canvas
         can.destroy()
         page()
+
+    def updateTask( self, indx, task, area, page ) :
+
+        task_sheet = pd.read_excel( pd.ExcelFile( self.path ), self.all_sheets[0])
+        row, col = task_sheet.shape
+        
+        wb = oxl.load_workbook( path )
+        sheet_xl = wb[self.all_sheets[0]]
 
     def taskMonitoringPage(self) :
 
