@@ -49,6 +49,17 @@ class TaskMonitor :
                     
                     sheet_xl[f"A{2}"] = indx
                     sheet_xl[f"B{2}"] = task
+                
+                elif ( indx > 1 )  :
+                    for i in range( row+2, indx, -1 ) :
+                        sheet_xl[f"A{i}"] = int(sheet_xl[f"A{i-1}"].value) + 1
+                        sheet_xl[f"B{i}"] = sheet_xl[f"B{i-1}"].value
+                    
+                    sheet_xl[f"A{indx+1}"] = indx
+                    sheet_xl[f"B{indx+1}"] = task
+                
+                else :
+                    showerror( message = "Invalid Entry!", title = "Invalid")
             
             except :
                 showerror( message = "Insert values of Valid Type", title = "Invalid value found")
