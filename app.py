@@ -30,13 +30,28 @@ class TaskMonitor :
         can.destroy()
         page()
 
-    def updateTask( self, indx, task, area, page ) :
+    def updateTask( self, indx, task, area, page) :
 
         task_sheet = pd.read_excel( pd.ExcelFile( self.path ), self.all_sheets[0])
         row, col = task_sheet.shape
         
         wb = oxl.load_workbook( path )
         sheet_xl = wb[self.all_sheets[0]]
+
+        if ( indx != "" ) and ( len(task) > 0 ) :
+        
+            try :
+                indx = int(indx)
+                if ( indx == 1 ) :
+                    for i in range( row+2, 2, -1 ) :
+                        sheet_xl[f"A{i}"] = int(sheet_xl[f"A{i-1}"].value) + 1
+                        sheet_xl[f"B{i}"] = sheet_xl[f"B{i-1}"].value
+                    
+                    sheet_xl[f"A{2}"] = indx
+                    sheet_xl[f"B{2}"] = task
+            
+            except :
+                showerror( message = "Insert values of Valid Type", title = "Invalid value found")
 
     def taskMonitoringPage(self) :
 
