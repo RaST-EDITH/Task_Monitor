@@ -35,7 +35,7 @@ class TaskMonitor :
         task_sheet = pd.read_excel( pd.ExcelFile( self.path ), self.all_sheets[0])
         row, col = task_sheet.shape
         
-        wb = oxl.load_workbook( path )
+        wb = oxl.load_workbook( self.path )
         sheet_xl = wb[self.all_sheets[0]]
 
         if ( indx != "" ) and ( len(task) > 0 ) :
@@ -60,9 +60,27 @@ class TaskMonitor :
                 
                 else :
                     showerror( message = "Invalid Entry!", title = "Invalid")
+                
+                try :
+
+                    wb.save( self.path )
+                    area.destroy()
+                    area = ctk.CTkTextbox( page, 
+                                            width = 850, height = 400, 
+                                             text_font = ( "Georgia", 20 ), 
+                                              state = "disabled"  )
+                    area.place( x = 80, y = 230, anchor = "nw")
+                    self.insertTask( area )
+                    self.insertTaskAnalysis()
+                
+                except :
+                    showerror( message = "Close Program related Files", title = "Open File found")
             
             except :
                 showerror( message = "Insert values of Valid Type", title = "Invalid value found")
+        
+        else :
+            showerror( message = "Field Empty!", title = "Value Not Found")
 
     def taskMonitoringPage(self) :
 
