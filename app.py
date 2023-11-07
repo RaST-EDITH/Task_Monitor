@@ -37,6 +37,20 @@ class TaskMonitor :
         
         wb = oxl.load_workbook( self.path )
         sheet_xl = wb[self.all_sheets[0]]
+        
+        if ( indx != "" ) :
+
+            indx = int(indx)
+            if ( indx>0 ) and ( indx<=row ) :
+
+                if ( sheet_xl[f"C{indx+1}"].value != "Done" ) :
+
+                    for i in range( indx+1, row+1 ) :
+                        sheet_xl[f"A{i}"].value = sheet_xl[f"A{i+1}"].value - 1
+                        sheet_xl[f"B{i}"].value = sheet_xl[f"B{i+1}"].value
+                    
+                    sheet_xl[f"A{row+1}"].value = None
+                    sheet_xl[f"B{row+1}"].value = None
 
     def updateTask( self, indx, task, area, page) :
 
