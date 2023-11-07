@@ -63,6 +63,12 @@ class TaskMonitor :
                         area.place( x = 80, y = 230, anchor = "nw")
                         self.insertTask( area )
                         self.insertTaskAnalysis()
+                    
+                    except :
+                        showerror( message = "Close Program related Files", title = "Open File found")
+
+                else :
+                    showerror( message = "Marked Task auto Remove Tommorow!", title = "Marked")
 
     def updateTask( self, indx, task, area, page) :
 
