@@ -52,6 +52,18 @@ class TaskMonitor :
                     sheet_xl[f"A{row+1}"].value = None
                     sheet_xl[f"B{row+1}"].value = None
 
+                    try :
+
+                        wb.save( self.path )
+                        area.destroy()
+                        area = ctk.CTkTextbox( page, 
+                                                width = 850, height = 400, 
+                                                text_font = ( "Georgia", 20 ), 
+                                                state = "disabled"  )
+                        area.place( x = 80, y = 230, anchor = "nw")
+                        self.insertTask( area )
+                        self.insertTaskAnalysis()
+
     def updateTask( self, indx, task, area, page) :
 
         task_sheet = pd.read_excel( pd.ExcelFile( self.path ), self.all_sheets[0])
