@@ -69,6 +69,12 @@ class TaskMonitor :
 
                 else :
                     showerror( message = "Marked Task auto Remove Tommorow!", title = "Marked")
+            
+            else :
+                showerror( message = "Invalid Entry!", title = "Invalid")
+            
+        else :
+            showerror( message = "Field Empty!!", title = "Value Not Found")
 
     def updateTask( self, indx, task, area, page) :
 
