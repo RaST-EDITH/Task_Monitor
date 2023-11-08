@@ -84,6 +84,17 @@ class TaskMonitor :
         wb = oxl.load_workbook( self.path )
         sheet_xl = wb[self.all_sheets[0]]
 
+        if ( indx != "" ) :
+
+            indx = int(indx)
+            if ( indx>0 ) and ( indx<=row ) :
+
+                if ( sheet_xl[f"C{indx+1}"].value != "Done" ) :
+
+                    sheet_xl[f"C{indx+1}"].value = "Done"
+                    wb.save( self.path )
+                    self.insertTaskAnalysis()
+
     def updateTask( self, indx, task, area, page) :
 
         task_sheet = pd.read_excel( pd.ExcelFile( self.path ), self.all_sheets[0])
