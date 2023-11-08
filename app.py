@@ -101,6 +101,15 @@ class TaskMonitor :
                                             state = "disabled"  )
                     area.place( x = 80, y = 230, anchor = "nw")
                     self.insertTask( area )
+                
+                else :
+                    showerror( title = "Invalid", message = "Already Marked" )
+        
+            else :
+                showerror( title = "Invalid!", message = "Invalid Entry" )
+
+        else :
+            showerror( message = "Field Empty!!", title = "Value Not Found")
 
     def updateTask( self, indx, task, area, page) :
 
