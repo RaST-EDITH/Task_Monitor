@@ -94,6 +94,13 @@ class TaskMonitor :
                     sheet_xl[f"C{indx+1}"].value = "Done"
                     wb.save( self.path )
                     self.insertTaskAnalysis()
+                    area.destroy()
+                    area = ctk.CTkTextbox( page, 
+                                            width = 850, height = 400, 
+                                            text_font = ( "Georgia", 20 ), 
+                                            state = "disabled"  )
+                    area.place( x = 80, y = 230, anchor = "nw")
+                    self.insertTask( area )
 
     def updateTask( self, indx, task, area, page) :
 
