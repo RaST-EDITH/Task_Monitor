@@ -30,6 +30,13 @@ class TaskMonitor :
         can.destroy()
         page()
 
+    def taskAnalysis() :
+
+        task_sheet = pd.read_excel( pd.ExcelFile( self.path ), self.all_sheets[1])
+        row, col = task_sheet.shape
+        task_col = task_sheet.columns
+        size = 21
+
     def removeTask( self, indx, area, page) :
         
         task_sheet = pd.read_excel( pd.ExcelFile( self.path ), self.all_sheets[0])
