@@ -76,6 +76,14 @@ class TaskMonitor :
         else :
             showerror( message = "Field Empty!!", title = "Value Not Found")
 
+    def statusTask( self, indx, area, page ) :
+
+        task_sheet = pd.read_excel( pd.ExcelFile( self.path ), self.all_sheets[0])
+        row, col = task_sheet.shape
+        
+        wb = oxl.load_workbook( self.path )
+        sheet_xl = wb[self.all_sheets[0]]
+
     def updateTask( self, indx, task, area, page) :
 
         task_sheet = pd.read_excel( pd.ExcelFile( self.path ), self.all_sheets[0])
