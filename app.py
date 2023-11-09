@@ -45,6 +45,9 @@ class TaskMonitor :
                 x.append(i)
             for i in task_sheet[task_col[2]] :
                 y.append(i)
+            plt.plot( [ i for i in range(row)], x, label = "Assigned Tasks", linewidth = '7', color = 'red')
+            plt.plot( [ i for i in range(row)], y, label = "Completed Tasks", linewidth = '7', color = 'green')
+            plt.xticks( [ i for i in range(row)], z, rotation = 40)
         
         else :
             diff = row - size
@@ -55,6 +58,14 @@ class TaskMonitor :
                 x.append(i)
             for i in task_sheet[task_col[2]][diff:row] :
                 y.append(i)
+            plt.plot( [ i for i in range(size)], x, label = "Assigned Tasks", linewidth = '7', color = 'red')
+            plt.plot( [ i for i in range(size)], y, label = "Completed Tasks", linewidth = '7', color = 'green')
+            plt.xticks( [ i for i in range(size)], z, rotation = 45)
+        plt.xlabel("Dates")
+        plt.ylabel("Number of Task")
+        plt.title("Task Monitoring Chart")
+        plt.legend()
+        plt.show()
 
     def removeTask( self, indx, area, page) :
         
