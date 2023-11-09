@@ -30,7 +30,7 @@ class TaskMonitor :
         can.destroy()
         page()
 
-    def taskAnalysis() :
+    def taskAnalysis(self) :
 
         task_sheet = pd.read_excel( pd.ExcelFile( self.path ), self.all_sheets[1])
         row, col = task_sheet.shape
@@ -66,6 +66,12 @@ class TaskMonitor :
         plt.title("Task Monitoring Chart")
         plt.legend()
         plt.show()
+
+    def insertTask( area ) :
+
+        task_sheet = pd.read_excel( pd.ExcelFile( self.path ), self.all_sheets[0] )
+        row, col = task_sheet.shape
+        task_col = task_sheet.columns
 
     def removeTask( self, indx, area, page) :
         
