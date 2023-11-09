@@ -37,6 +37,15 @@ class TaskMonitor :
         task_col = task_sheet.columns
         size = 21
 
+        if ( row<=size ) :
+            x, y, z = [],[],[]
+            for i in task_sheet[task_col[0]] :
+                z.append(i)
+            for i in task_sheet[task_col[1]] :
+                x.append(i)
+            for i in task_sheet[task_col[2]] :
+                y.append(i)
+
     def removeTask( self, indx, area, page) :
         
         task_sheet = pd.read_excel( pd.ExcelFile( self.path ), self.all_sheets[0])
