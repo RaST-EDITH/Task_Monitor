@@ -45,6 +45,16 @@ class TaskMonitor :
                 x.append(i)
             for i in task_sheet[task_col[2]] :
                 y.append(i)
+        
+        else :
+            diff = row - size
+            x, y, z = [],[],[]
+            for i in task_sheet[task_col[0]][diff:row] :
+                z.append(i)
+            for i in task_sheet[task_col[1]][diff:row] :
+                x.append(i)
+            for i in task_sheet[task_col[2]][diff:row] :
+                y.append(i)
 
     def removeTask( self, indx, area, page) :
         
