@@ -67,11 +67,20 @@ class TaskMonitor :
         plt.legend()
         plt.show()
 
-    def insertTask( area ) :
+    def insertTask( self, area ) :
 
         task_sheet = pd.read_excel( pd.ExcelFile( self.path ), self.all_sheets[0] )
         row, col = task_sheet.shape
         task_col = task_sheet.columns
+
+        area.configure( state = "normal")
+        for i in range(row) :
+            if ( task_sheet[task_col[2]][i] == "Done" ) :
+                text = f"✔ {task_sheet[task_col[0]][i]} {task_sheet[task_col[1]][i]} \n"
+            else :
+                text = f"     {task_sheet[task_col[0]][i]} {task_sheet[task_col[1]][i]} \n"
+            area.insert( f"{task_sheet[task_col[0]][i]}.0", text )
+        area.configure( state = "disabled")
 
     def removeTask( self, indx, area, page) :
         
