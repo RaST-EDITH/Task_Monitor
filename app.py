@@ -67,6 +67,17 @@ class TaskMonitor :
         plt.legend()
         plt.show()
 
+    def insertTaskAnalysis(self) :
+
+        from datetime import datetime, date
+        task_sheet1 = pd.read_excel( pd.ExcelFile( self.path ), self.all_sheets[0])
+        task_sheet2 = pd.read_excel( pd.ExcelFile( self.path ), self.all_sheets[1])
+        row1, col1 = task_sheet1.shape
+        row2, col2 = task_sheet2.shape
+        wb = oxl.load_workbook( self.path )
+        sheet_xl1 = wb[self.all_sheets[0]]
+        sheet_xl2 = wb[self.all_sheets[1]]
+
     def insertTask( self, area ) :
 
         task_sheet = pd.read_excel( pd.ExcelFile( self.path ), self.all_sheets[0] )
