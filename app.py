@@ -78,6 +78,14 @@ class TaskMonitor :
         sheet_xl1 = wb[self.all_sheets[0]]
         sheet_xl2 = wb[self.all_sheets[1]]
 
+        tarik = date.today().strftime("%d/%m/%Y")
+        done = ( task_sheet1["Status"] == "Done" )
+        done = dict(done.value_counts())
+        if True in done.keys() :
+            done = done[True]
+        else :
+            done = 0
+
     def insertTask( self, area ) :
 
         task_sheet = pd.read_excel( pd.ExcelFile( self.path ), self.all_sheets[0] )
