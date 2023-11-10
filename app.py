@@ -107,6 +107,14 @@ class TaskMonitor :
                 sheet_xl1[f"A{i+2}"].value = None
                 sheet_xl1[f"B{i+2}"].value = None
                 sheet_xl1[f"C{i+2}"].value = None
+        
+        else :
+
+            sheet_xl2[f"A{row2+1}"].value = tarik
+            sheet_xl2[f"B{row2+1}"].value = row1
+            sheet_xl2[f"C{row2+1}"].value = done
+
+        wb.save( self.path )
 
     def insertTask( self, area ) :
 
