@@ -96,6 +96,18 @@ class TaskMonitor :
             count = 2
             task_col = task_sheet1.columns
 
+            for i in range( row1 ) :
+                if ( task_sheet1[task_col[2]][i] != "Done" ) :
+                    sheet_xl1[f"A{count}"].value = count - 1
+                    sheet_xl1[f"B{count}"].value = task_sheet1[task_col[1]][i]
+                    sheet_xl1[f"C{count}"].value = task_sheet1[task_col[2]][i]
+                    count = count+1
+            
+            for i in range( count-2, row1 ) :
+                sheet_xl1[f"A{i+2}"].value = None
+                sheet_xl1[f"B{i+2}"].value = None
+                sheet_xl1[f"C{i+2}"].value = None
+
     def insertTask( self, area ) :
 
         task_sheet = pd.read_excel( pd.ExcelFile( self.path ), self.all_sheets[0] )
