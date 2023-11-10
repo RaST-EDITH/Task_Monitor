@@ -85,6 +85,16 @@ class TaskMonitor :
             done = done[True]
         else :
             done = 0
+        
+        if ( sheet_xl2[f"A{row2+1}"].value != tarik ) :
+
+            sheet_xl2[f"A{row2+2}"].value = tarik
+            sheet_xl2[f"B{row2+2}"].value = row1 - done
+            sheet_xl2[f"C{row2+2}"].value = 0
+            sheet_xl2[f"C{row2+1}"].value = done
+
+            count = 2
+            task_col = task_sheet1.columns
 
     def insertTask( self, area ) :
 
