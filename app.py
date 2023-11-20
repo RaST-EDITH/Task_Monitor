@@ -400,19 +400,26 @@ class TaskMonitor :
                                 borderwidth = 0 )
         first_page.pack( fill = "both", expand = True )
 
+        # Background Image
+        back_image = self.Imgo( r"C:\Users\ASUS\OneDrive\Pictures\back2a.jpg", 1498, 875)
+        # back_image = self.Imgo( os.path.join( os.getcwd(), r"Design\schedule.ico" ), 1498, 875)
+        first_page.create_image( 0, 0, image = back_image , anchor = "nw")
+
         # Heading
-        first_page.create_text( 400, 119, text = "Task Monitor", 
-                                font = ( "Georgia", 42, "bold" ), fill = "#ec1c24" )
+        first_page.create_text( 300, 100+70, text = "Task", 
+                                font = ( "Georgia", 60, "bold" ), fill = "#a7a8ac" )#a7a8ac
+        first_page.create_text( 400-10, 210+70, text = "Monitor", 
+                                font = ( "Georgia", 60, "bold" ), fill = "#e3e3e3" )#222222
 
         # Next Page Button
-        next_bt = ctk.CTkButton( master = first_page, 
-                                  text = "Let's Go ->", text_font = ( "Tahoma", 20 ), 
-                                   width = 100, height = 40, corner_radius = 18,
-                                    bg_color = "#fecc8f", fg_color = "#ec1c24", 
-                                     hover_color = "#ff5359", border_width = 0,
+        next_bt = ctk.CTkButton( master = first_page,
+                                  text = "Let's  Go  ->", text_font = ( "Georgia", 23 ),
+                                   width = 120, height = 50, corner_radius = 14,
+                                    bg_color = "#0d0d0d", fg_color = "#414143",
+                                     hover_color = "#59595b", border_width = 0,
                                       text_color = "white",
                                        command = lambda : self.change( first_page, self.taskMonitoringPage ) )
-        next_bt_win = first_page.create_window( 320, 720, anchor = "nw", window = next_bt )
+        next_bt_win = first_page.create_window( 200-10, 640, anchor = "nw", window = next_bt )
 
         self.root.mainloop()
 
