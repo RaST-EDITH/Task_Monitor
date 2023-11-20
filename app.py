@@ -18,9 +18,10 @@ class TaskMonitor :
         self.height = 700
         self.root = ctk.CTk()
         self.root.title( "Task Monitor" )
+        self.root.iconbitmap( os.path.join( os.getcwd(), "Design\schedule.ico" ))
         self.root.geometry( "1200x700+200+80" )
         self.root.resizable( False, False )
-        self.path = os.path.join( os.getcwd(), r"Data File\task_file.xlsx")
+        self.path = os.path.join( os.getcwd(), r"Data_File\task_file.xlsx")
         xl = pd.ExcelFile( self.path )
         self.all_sheets = xl.sheet_names
     
@@ -29,6 +30,13 @@ class TaskMonitor :
         # Switching canvas
         can.destroy()
         page()
+
+    def Imgo( self, file, w, h) :
+
+        # Image processing
+        img = Image.open( file )
+        pht = ImageTk.PhotoImage( img.resize( (w,h), Image.Resampling.LANCZOS))
+        return pht
 
     def taskAnalysis(self) :
 
