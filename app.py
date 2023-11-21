@@ -166,9 +166,11 @@ class TaskMonitor :
                         wb.save( self.path )
                         area.destroy()
                         area = ctk.CTkTextbox( page, 
-                                                width = 850, height = 400, 
-                                                text_font = ( "Georgia", 20 ), 
-                                                state = "disabled"  )
+                                                width = 800, height = 400-20, 
+                                                 text_font = ( "Georgia", 20  ), 
+                                                  state = "disabled", corner_radius = 18,
+                                                   fg_color = "#6d6e70", bg_color = "#000000",
+                                                    border_color = "#3e3e40" , border_width = 8  )
                         area.place( x = 80, y = 230, anchor = "nw")
                         self.insertTask( area )
                         self.insertTaskAnalysis()
@@ -205,9 +207,11 @@ class TaskMonitor :
                     self.insertTaskAnalysis()
                     area.destroy()
                     area = ctk.CTkTextbox( page, 
-                                            width = 850, height = 400, 
-                                            text_font = ( "Georgia", 20 ), 
-                                            state = "disabled"  )
+                                            width = 800, height = 400-20, 
+                                             text_font = ( "Georgia", 20  ), 
+                                              state = "disabled", corner_radius = 18,
+                                               fg_color = "#6d6e70", bg_color = "#000000",
+                                                border_color = "#3e3e40" , border_width = 8  )
                     area.place( x = 80, y = 230, anchor = "nw")
                     self.insertTask( area )
                 
@@ -256,9 +260,11 @@ class TaskMonitor :
                     wb.save( self.path )
                     area.destroy()
                     area = ctk.CTkTextbox( page, 
-                                            width = 850, height = 400, 
-                                             text_font = ( "Georgia", 20 ), 
-                                              state = "disabled"  )
+                                            width = 800, height = 400-20, 
+                                             text_font = ( "Georgia", 20  ), 
+                                              state = "disabled", corner_radius = 18,
+                                               fg_color = "#6d6e70", bg_color = "#000000",
+                                                border_color = "#3e3e40" , border_width = 8  )
                     area.place( x = 80, y = 230, anchor = "nw")
                     self.insertTask( area )
                     self.insertTaskAnalysis()
@@ -283,8 +289,8 @@ class TaskMonitor :
 
         # Background Image
         back_image = self.Imgo( os.path.join( os.getcwd(), r"Design\secondpage.jpg" ), 1498, 875)
-        design_image = self.Imgo( os.path.join( os.getcwd(), r"Design\message.png" ), 70, 75)
         taskMon_page.create_image( 0, 0, image = back_image , anchor = "nw")
+        design_image = self.Imgo( os.path.join( os.getcwd(), r"Design\message.png" ), 70, 75)
         taskMon_page.create_image( 1380, 30, image = design_image , anchor = "nw")
 
         # Heading
@@ -297,7 +303,7 @@ class TaskMonitor :
                                width = 100, height = 30, corner_radius = 14,
                                 placeholder_text_color = "#666666", text_color = "#191919", 
                                  fg_color = "#e1f5ff", bg_color = "#000000", 
-                                  border_color = "white", border_width = 3)
+                                  border_color = "#3e3e40" , border_width = 5 )
         indx_win = taskMon_page.create_window( 100, 320-120, anchor = "nw", window = indx )
         
         # Task Entry Box
@@ -306,7 +312,7 @@ class TaskMonitor :
                                width = 550, height = 30, corner_radius = 14,
                                 placeholder_text_color = "#666666", text_color = "#191919", 
                                  fg_color = "#e1f5ff", bg_color = "#000000", 
-                                  border_color = "white", border_width = 3)
+                                  border_color = "#3e3e40" , border_width = 5 )
         task_win = taskMon_page.create_window( 231, 320-120, anchor = "nw", window = task )
 
         task_box = ctk.CTkTextbox( taskMon_page, 
@@ -341,7 +347,7 @@ class TaskMonitor :
                                  width = 100, height = 30, corner_radius = 14,
                                   placeholder_text_color = "#666666", text_color = "#191919", 
                                    fg_color = "#e1f5ff", bg_color = "#000000", 
-                                    border_color = "white", border_width = 3)
+                                    border_color = "#3e3e40" , border_width = 5 )
         remove_win = taskMon_page.create_window( 1330, 448-100, anchor = "nw", window = remove )
 
         remove.bind('<Return>', lambda event = None : self.removeTask( remove.get(), task_box, taskMon_page ) )
@@ -365,7 +371,7 @@ class TaskMonitor :
                                  width = 100, height = 30, corner_radius = 14,
                                   placeholder_text_color = "#666666", text_color = "#191919", 
                                    fg_color = "#e1f5ff", bg_color = "#000000", 
-                                    border_color = "white", border_width = 3)
+                                    border_color = "#3e3e40" , border_width = 5 )
         tkdone_win = taskMon_page.create_window( 1330, 638-80, anchor = "nw", window = tkdone )
 
         tkdone.bind('<Return>', lambda event = None : self.statusTask( tkdone.get(), task_box, taskMon_page ) )
