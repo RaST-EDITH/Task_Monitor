@@ -281,32 +281,40 @@ class TaskMonitor :
                                   borderwidth = 0 )
         taskMon_page.pack( fill = "both", expand = True )
 
+        # Background Image
+        back_image = self.Imgo( os.path.join( os.getcwd(), r"Design\secondpage.jpg" ), 1498, 875)
+        design_image = self.Imgo( os.path.join( os.getcwd(), r"Design\message.png" ), 70, 75)
+        taskMon_page.create_image( 0, 0, image = back_image , anchor = "nw")
+        taskMon_page.create_image( 1380, 30, image = design_image , anchor = "nw")
+
         # Heading
-        taskMon_page.create_text( 530, 130, text = "Task Monitoring", 
-                                font = ( "Georgia", 42, "bold" ), fill = "#ec1c24" )
+        taskMon_page.create_text( 400, 130, text = "Task Monitoring", 
+                                font = ( "Georgia", 42, "bold" ), fill = "#a7a8ac" )
 
         # Task Index Box
         indx = ctk.CTkEntry( master = taskMon_page, 
                               placeholder_text = "Index", text_font = ( "Georgia", 20 ), 
-                               width = 95, height = 30, corner_radius = 14,
+                               width = 100, height = 30, corner_radius = 14,
                                 placeholder_text_color = "#666666", text_color = "#191919", 
-                                 fg_color = "#e1f5ff", bg_color = "black", 
+                                 fg_color = "#e1f5ff", bg_color = "#000000", 
                                   border_color = "white", border_width = 3)
-        indx_win = taskMon_page.create_window( 200, 320-120, anchor = "nw", window = indx )
+        indx_win = taskMon_page.create_window( 100, 320-120, anchor = "nw", window = indx )
         
         # Task Entry Box
         task = ctk.CTkEntry( master = taskMon_page, 
                               placeholder_text = "Enter Task", text_font = ( "Georgia", 20 ), 
                                width = 550, height = 30, corner_radius = 14,
                                 placeholder_text_color = "#666666", text_color = "#191919", 
-                                 fg_color = "#e1f5ff", bg_color = "black", 
+                                 fg_color = "#e1f5ff", bg_color = "#000000", 
                                   border_color = "white", border_width = 3)
-        task_win = taskMon_page.create_window( 325, 320-120, anchor = "nw", window = task )
+        task_win = taskMon_page.create_window( 231, 320-120, anchor = "nw", window = task )
 
         task_box = ctk.CTkTextbox( taskMon_page, 
-                                    width = 850, height = 400, 
+                                    width = 800, height = 400-20, 
                                      text_font = ( "Georgia", 20  ), 
-                                      state = "disabled"  )
+                                      state = "disabled", corner_radius = 18,
+                                       fg_color = "#6d6e70", bg_color = "#000000",
+                                        border_color = "#3e3e40" , border_width = 8  )
         task_box.place( x = 80, y = 230, anchor = "nw")
 
         self.insertTaskAnalysis()
@@ -318,23 +326,23 @@ class TaskMonitor :
         insert_bt = ctk.CTkButton( master = taskMon_page, 
                                    text = "Insert", text_font = ( "Georgia", 20  ), 
                                     width = 100, height = 40, corner_radius = 18,
-                                     bg_color = "black", fg_color = "red", 
-                                      hover_color = "#ff5359", border_width = 0, 
+                                     bg_color = "#000000", fg_color = "#3e3e40", 
+                                      hover_color = "#6d6e70", border_width = 0, 
                                        command = lambda : self.updateTask( indx.get(), task.get(), task_box, taskMon_page ) )
-        insert_bt_win = taskMon_page.create_window( 1030, 320-120, anchor = "nw", window = insert_bt )
+        insert_bt_win = taskMon_page.create_window( 930, 200, anchor = "nw", window = insert_bt )
 
         # Remove Task
-        taskMon_page.create_text( 1100+20+130+50, 350-10, text = "Remove Task", 
+        taskMon_page.create_text( 1360, 418-100, text = "Remove Task", 
                                 font = ( "Tahoma", 18, "italic", "underline" ), fill = "white" )
 
         # Task Remove Box
         remove = ctk.CTkEntry( master = taskMon_page, 
                                 placeholder_text = "Index", text_font = ( "Georgia", 20  ), 
-                                 width = 180, height = 30, corner_radius = 14,
+                                 width = 100, height = 30, corner_radius = 14,
                                   placeholder_text_color = "#666666", text_color = "#191919", 
-                                   fg_color = "#e1f5ff", bg_color = "black", 
+                                   fg_color = "#e1f5ff", bg_color = "#000000", 
                                     border_color = "white", border_width = 3)
-        remove_win = taskMon_page.create_window( 1015+130+50, 370, anchor = "nw", window = remove )
+        remove_win = taskMon_page.create_window( 1330, 448-100, anchor = "nw", window = remove )
 
         remove.bind('<Return>', lambda event = None : self.removeTask( remove.get(), task_box, taskMon_page ) )
 
@@ -342,50 +350,51 @@ class TaskMonitor :
         remove_bt = ctk.CTkButton( master = taskMon_page, 
                                     text = "Remove", text_font = ( "Georgia", 20  ), 
                                      width = 80, height = 40, corner_radius = 18,
-                                      bg_color = "black", fg_color = "red", 
+                                      bg_color = "#000000", fg_color = "red", 
                                        hover_color = "#ff5359", border_width = 0, 
                                         command = lambda : self.removeTask( remove.get(), task_box, taskMon_page ) )
-        remove_bt_win = taskMon_page.create_window( 1285, 440, anchor = "nw", window = remove_bt )
+        remove_bt_win = taskMon_page.create_window( 1290, 510-100, anchor = "nw", window = remove_bt )
 
         # Mark Done Task
-        taskMon_page.create_text( 1115+20+130+50, 550+50, text = "Mark Done Task", 
+        taskMon_page.create_text( 1350, 608-80, text = "Mark Done Task", 
                                 font = ( "Tahoma", 18, "italic", "underline" ), fill = "white" )
 
         # Task Done Box
         tkdone = ctk.CTkEntry( master = taskMon_page, 
                                 placeholder_text = "Index", text_font = ( "Georgia", 20 ), 
-                                 width = 180, height = 30, corner_radius = 14,
+                                 width = 100, height = 30, corner_radius = 14,
                                   placeholder_text_color = "#666666", text_color = "#191919", 
-                                   fg_color = "#e1f5ff", bg_color = "black", 
+                                   fg_color = "#e1f5ff", bg_color = "#000000", 
                                     border_color = "white", border_width = 3)
-        tkdone_win = taskMon_page.create_window( 1015+130+50, 580+50, anchor = "nw", window = tkdone )
+        tkdone_win = taskMon_page.create_window( 1330, 638-80, anchor = "nw", window = tkdone )
 
         tkdone.bind('<Return>', lambda event = None : self.statusTask( tkdone.get(), task_box, taskMon_page ) )
     
         # Done Button
         tkdone_bt = ctk.CTkButton( master = taskMon_page, 
                                    text = "Mark Done", text_font = ( "Georgia", 20 ), 
-                                    width = 80, height = 40, corner_radius = 18,
-                                     bg_color = "black", fg_color = "red", 
-                                      hover_color = "#ff5359", border_width = 0, 
+                                    width = 70, height = 40, corner_radius = 18,
+                                     bg_color = "#000000", fg_color = "#3e3e40", 
+                                      hover_color = "#6d6e70", border_width = 0, 
                                        command = lambda : self.statusTask( tkdone.get(), task_box, taskMon_page ) )
-        tkdone_bt_win = taskMon_page.create_window( 1250, 650+50, anchor = "nw", window = tkdone_bt )
+        tkdone_bt_win = taskMon_page.create_window( 1240, 700-80, anchor = "nw", window = tkdone_bt )
 
         # Analysis Button
         analysis_bt = ctk.CTkButton( master = taskMon_page, 
                                       text = "Analysis", text_font = ( "Georgia", 20 ), 
                                        width = 120, height = 40, corner_radius = 18,
-                                        bg_color = "black", fg_color = "red", 
+                                        bg_color = "#000000", fg_color = "red", 
                                          hover_color = "#ff5359", border_width = 0, 
                                           command = lambda : self.taskAnalysis() )
         analysis_bt_win = taskMon_page.create_window( 650, 805, anchor = "nw", window = analysis_bt )
 
         # Return Button
+        ret_img = self.Imgo( os.path.join( os.getcwd(), "Design\logout.png" ), 35, 35 )
         back_bt = ctk.CTkButton( master = taskMon_page, 
-                                  text = "Back", text_font = ( "Georgia", 20 ),  
+                                  image = ret_img, text = None, 
                                    width = 45, height = 45, corner_radius = 23, 
-                                    bg_color = "#fcd7ab", fg_color = "red", 
-                                     hover_color = "#ff5359", border_width = 0, 
+                                    bg_color = "#000000", fg_color = "red", 
+                                     hover_color = "#ff5359", border_width = 0,  
                                       command = lambda : self.change( taskMon_page, self.firstPage ))
         back_bt_win = taskMon_page.create_window( 30, 20, anchor = "nw", window = back_bt )
 
@@ -401,13 +410,12 @@ class TaskMonitor :
         first_page.pack( fill = "both", expand = True )
 
         # Background Image
-        back_image = self.Imgo( r"C:\Users\ASUS\OneDrive\Pictures\back2a.jpg", 1498, 875)
-        # back_image = self.Imgo( os.path.join( os.getcwd(), r"Design\schedule.ico" ), 1498, 875)
+        back_image = self.Imgo( os.path.join( os.getcwd(), r"Design\firstpage.jpg" ), 1498, 875)
         first_page.create_image( 0, 0, image = back_image , anchor = "nw")
 
         # Heading
         first_page.create_text( 300, 100+70, text = "Task", 
-                                font = ( "Georgia", 60, "bold" ), fill = "#a7a8ac" )#a7a8ac
+                                font = ( "Georgia", 60, "bold" ), fill = "#a7a8ac" )
         first_page.create_text( 400-10, 210+70, text = "Monitor", 
                                 font = ( "Georgia", 60, "bold" ), fill = "#e3e3e3" )#222222
 
@@ -415,8 +423,8 @@ class TaskMonitor :
         next_bt = ctk.CTkButton( master = first_page,
                                   text = "Let's  Go  ->", text_font = ( "Georgia", 23 ),
                                    width = 120, height = 50, corner_radius = 14,
-                                    bg_color = "#0d0d0d", fg_color = "#414143",
-                                     hover_color = "#59595b", border_width = 0,
+                                    bg_color = "#0d0d0d", fg_color = "red",
+                                     hover_color = "#ff5359", border_width = 0,
                                       text_color = "white",
                                        command = lambda : self.change( first_page, self.taskMonitoringPage ) )
         next_bt_win = first_page.create_window( 200-10, 640, anchor = "nw", window = next_bt )
